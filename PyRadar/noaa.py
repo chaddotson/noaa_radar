@@ -135,7 +135,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance of the NOAA composite reflectivity
+        :return: A PIL.Image instance with the NOAA composite reflectivity.
         """
         return self._build_radar_image(tower_id, "NCR", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -166,22 +166,133 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance of the NOAA base reflectivity
+        :return: A PIL.Image instance with the NOAA base reflectivity.
         """
         return self._build_radar_image(tower_id, "N0R", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
                                        include_highways=include_highways, include_cities=include_cities,
                                        include_rivers=include_rivers, include_topography=include_topography)
 
+    def get_storm_relative_motion(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                                  include_warnings=True, include_highways=True, include_cities=True,
+                                  include_rivers=True, include_topography=True):
+        """
+        Get the storm relative motion for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: str
+        :param background: The hex background color.
+        :type background: str
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance with the NOAA storm relative motion.
+        """
+        return self._build_radar_image(tower_id, "N0S", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
 
-    def get_storm_relative_motion(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "N0S", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
+    def get_base_velocity(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                          include_warnings=True, include_highways=True, include_cities=True,
+                          include_rivers=True, include_topography=True):
+        """
+        Get the base velocity for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: str
+        :param background: The hex background color.
+        :type background: str
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance with the NOAA base velocity.
+        """
+        return self._build_radar_image(tower_id, "N0V", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
 
-    def get_base_velocity(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "N0V", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
+    def get_one_hour_precipitation(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                          include_warnings=True, include_highways=True, include_cities=True,
+                          include_rivers=True, include_topography=True):
+        """
+        Get the one hour precipitation for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: str
+        :param background: The hex background color.
+        :type background: str
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance with the NOAA one hour precipitation.
+        """
+        return self._build_radar_image(tower_id, "N1P", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
 
-    def get_one_hour_precipitation(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "N1P", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
-
-    def get_storm_total_precipitation(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "NTP", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
+    def get_storm_total_precipitation(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                                      include_warnings=True, include_highways=True, include_cities=True,
+                                      include_rivers=True, include_topography=True):
+        """
+        Get the storm total precipitation for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: str
+        :param background: The hex background color.
+        :type background: str
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance with the NOAA storm total precipitation.
+        """
+        return self._build_radar_image(tower_id, "NTP", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
