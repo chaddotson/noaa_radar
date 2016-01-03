@@ -65,14 +65,14 @@ class NOAA:
             cities = get_image_from_url(self._ridge_rivers_format.format(self._radar_type_map[type][1], tower_id)).convert("RGBA")
             self._overlay(image, cities)
 
-    def _build_radar_image(self, tower_id, type, background='#000000', include_topography=True, include_legend=True,
+    def _build_radar_image(self, tower_id, radar_type_string, background='#000000', include_topography=True, include_legend=True,
                            include_counties=True, include_warnings=True, include_highways=True, include_cities=True,
                            include_rivers=True):
-        type = type.upper()
+        radar_type_string = radar_type_string.upper()
         tower_id = tower_id.upper()
 
         logger.debug("Tower ID: %s", tower_id)
-        logger.debug("Type: %s", type)
+        logger.debug("Type: %s", radar_type_string)
         logger.debug("Background: %s", background)
         logger.debug("Include Topography: %s", include_topography)
         logger.debug("Include Legend: %s", include_legend)
@@ -82,32 +82,32 @@ class NOAA:
         logger.debug("Include Cities: %s", include_cities)
         logger.debug("Include Rivers: %s", include_rivers)
 
-        radar = get_image_from_url(self._ridge_radar_format.format(type, tower_id)).convert("RGBA")
+        radar = get_image_from_url(self._ridge_radar_format.format(radar_type_string, tower_id)).convert("RGBA")
 
         combined_image = Image.new("RGB", radar.size, background)
 
         if include_topography:
-            self._add_topography(type, tower_id, combined_image)
+            self._add_topography(radar_type_string, tower_id, combined_image)
 
         combined_image.paste(radar, (0, 0), mask=radar)
 
         if include_rivers:
-            self._add_rivers(type, tower_id, combined_image)
+            self._add_rivers(radar_type_string, tower_id, combined_image)
 
         if include_counties:
-            self._add_counties(type, tower_id, combined_image)
+            self._add_counties(radar_type_string, tower_id, combined_image)
 
         if include_highways:
-            self._add_highways(type, tower_id, combined_image)
+            self._add_highways(radar_type_string, tower_id, combined_image)
 
         if include_cities:
-            self._add_cities(type, tower_id, combined_image)
+            self._add_cities(radar_type_string, tower_id, combined_image)
 
         if include_warnings:
-            self._add_warnings(type, tower_id, combined_image)
+            self._add_warnings(radar_type_string, tower_id, combined_image)
 
         if include_legend:
-            self._add_legend(type, tower_id, combined_image)
+            self._add_legend(radar_type_string, tower_id, combined_image)
 
         return combined_image
 
@@ -117,9 +117,9 @@ class NOAA:
         """
         Get the composite reflectivity for a noaa radar site.
         :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
-        :type tower_id: basestring
+        :type tower_id: str
         :param background: The hex background color.
-        :type background: basestring
+        :type background: str
         :param include_legend: True - include legend.
         :type include_legend: bool
         :param include_counties: True - include county lines.
@@ -130,6 +130,10 @@ class NOAA:
         :type include_highways: bool
         :param include_cities: True - include city labels.
         :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
         :rtype: PIL.Image
         :return: A PIL.Image instance of the NOAA composite reflectivity
         """
@@ -144,9 +148,9 @@ class NOAA:
         """
         Get the base reflectivity for a noaa radar site.
         :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
-        :type tower_id: basestring
+        :type tower_id: str
         :param background: The hex background color.
-        :type background: basestring
+        :type background: str
         :param include_legend: True - include legend.
         :type include_legend: bool
         :param include_counties: True - include county lines.
@@ -157,6 +161,10 @@ class NOAA:
         :type include_highways: bool
         :param include_cities: True - include city labels.
         :type include_cities: bool
+        :param include_rivers: True - include rivers
+        :type include_rivers: bool
+        :param include_topography: True - include topography
+        :type include_topography: bool
         :rtype: PIL.Image
         :return: A PIL.Image instance of the NOAA base reflectivity
         """
