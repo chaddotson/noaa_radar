@@ -115,7 +115,7 @@ class NOAA:
                                    include_warnings=True, include_highways=True, include_cities=True,
                                    include_rivers=True, include_topography=True):
         """
-        "Get the composite reflectivity for a noaa radar site.
+        Get the composite reflectivity for a noaa radar site.
         :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
         :type tower_id: basestring
         :param background: The hex background color.
@@ -141,6 +141,25 @@ class NOAA:
     def get_base_reflectivity(self, tower_id, background='#000000', include_legend=True, include_counties=True,
                               include_warnings=True, include_highways=True, include_cities=True,
                               include_rivers=True, include_topography=True):
+        """
+        Get the base reflectivity for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: basestring
+        :param background: The hex background color.
+        :type background: basestring
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance of the NOAA base reflectivity
+        """
         return self._build_radar_image(tower_id, "N0R", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
                                        include_highways=include_highways, include_cities=include_cities,
