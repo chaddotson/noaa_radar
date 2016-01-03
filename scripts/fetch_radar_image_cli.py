@@ -1,15 +1,13 @@
+#!/usr/bin/env python
 
 """
 This script will fetch and composite NOAA weather radar images.
 """
 
-#!/usr/bin/env python
-
 from argparse import ArgumentParser
 from logging import basicConfig, getLogger, INFO, DEBUG
 
 from PyRadar import NOAA
-
 
 basicConfig(level=INFO, format='%(asctime)s - %(levelname)s - %(name)s - %(message)s')
 
@@ -24,7 +22,8 @@ def get_args():
     parser.add_argument('--relative_motion', default=False, help='Get storm relative motion.', action='store_true')
     parser.add_argument('--base_velocity', default=False, help='Get base velocity.', action='store_true')
     parser.add_argument('--one_hour', default=False, help='Get one hour precipitation.', action='store_true')
-    parser.add_argument('--composite_reflectivity', default=False, help='Get composite reflectivity.', action='store_true')
+    parser.add_argument('--composite_reflectivity', default=False, help='Get composite reflectivity.',
+                        action='store_true')
     parser.add_argument('--storm_total', default=False, help='Get storm total precipitation.', action='store_true')
     parser.add_argument('--background', default='#000000', help='The hex background color.  Default: #000000')
     parser.add_argument('--highways', default=False, help='Include highways', action='store_true')
@@ -50,71 +49,73 @@ def main():
 
         img = None
 
+        noaa = NOAA()
+
         if args.base_reflectivity:
-            img = NOAA().get_base_reflectivity(args.radar,
-                                               background=args.background,
-                                               include_highways=args.highways,
-                                               include_counties=args.counties,
-                                               include_cities=args.cities,
-                                               include_legend=args.legend,
-                                               include_warnings=args.warnings,
-                                               include_rivers=args.rivers,
-                                               include_topography=args.topo)
+            img = noaa.get_base_reflectivity(args.radar,
+                                             background=args.background,
+                                             include_highways=args.highways,
+                                             include_counties=args.counties,
+                                             include_cities=args.cities,
+                                             include_legend=args.legend,
+                                             include_warnings=args.warnings,
+                                             include_rivers=args.rivers,
+                                             include_topography=args.topo)
 
         elif args.composite_reflectivity:
-            img = NOAA().get_composite_reflectivity(args.radar,
-                                                    background=args.background,
-                                                    include_highways=args.highways,
-                                                    include_counties=args.counties,
-                                                    include_cities=args.cities,
-                                                    include_legend=args.legend,
-                                                    include_warnings=args.warnings,
-                                                    include_rivers=args.rivers,
-                                                    include_topography=args.topo)
+            img = noaa.get_composite_reflectivity(args.radar,
+                                                  background=args.background,
+                                                  include_highways=args.highways,
+                                                  include_counties=args.counties,
+                                                  include_cities=args.cities,
+                                                  include_legend=args.legend,
+                                                  include_warnings=args.warnings,
+                                                  include_rivers=args.rivers,
+                                                  include_topography=args.topo)
 
         elif args.relative_motion:
-            img = NOAA().get_storm_relative_motion(args.radar,
-                                                   background=args.background,
-                                                   include_highways=args.highways,
-                                                   include_counties=args.counties,
-                                                   include_cities=args.cities,
-                                                   include_legend=args.legend,
-                                                   include_warnings=args.warnings,
-                                                   include_rivers=args.rivers,
-                                                   include_topography=args.topo)
+            img = noaa.get_storm_relative_motion(args.radar,
+                                                 background=args.background,
+                                                 include_highways=args.highways,
+                                                 include_counties=args.counties,
+                                                 include_cities=args.cities,
+                                                 include_legend=args.legend,
+                                                 include_warnings=args.warnings,
+                                                 include_rivers=args.rivers,
+                                                 include_topography=args.topo)
 
         elif args.base_velocity:
-            img = NOAA().get_base_velocity(args.radar,
-                                           background=args.background,
-                                           include_highways=args.highways,
-                                           include_counties=args.counties,
-                                           include_cities=args.cities,
-                                           include_legend=args.legend,
-                                           include_warnings=args.warnings,
-                                           include_rivers=args.rivers,
-                                           include_topography=args.topo)
+            img = noaa.get_base_velocity(args.radar,
+                                         background=args.background,
+                                         include_highways=args.highways,
+                                         include_counties=args.counties,
+                                         include_cities=args.cities,
+                                         include_legend=args.legend,
+                                         include_warnings=args.warnings,
+                                         include_rivers=args.rivers,
+                                         include_topography=args.topo)
 
         elif args.one_hour:
-            img = NOAA().get_one_hour_precipitation(args.radar,
-                                                    background=args.background,
-                                                    include_highways=args.highways,
-                                                    include_counties=args.counties,
-                                                    include_cities=args.cities,
-                                                    include_legend=args.legend,
-                                                    include_warnings=args.warnings,
-                                                    include_rivers=args.rivers,
-                                                    include_topography=args.topo)
+            img = noaa.get_one_hour_precipitation(args.radar,
+                                                  background=args.background,
+                                                  include_highways=args.highways,
+                                                  include_counties=args.counties,
+                                                  include_cities=args.cities,
+                                                  include_legend=args.legend,
+                                                  include_warnings=args.warnings,
+                                                  include_rivers=args.rivers,
+                                                  include_topography=args.topo)
 
         elif args.storm_total:
-            img = NOAA().get_storm_total_precipitation(args.radar,
-                                                       background=args.background,
-                                                       include_highways=args.highways,
-                                                       include_counties=args.counties,
-                                                       include_cities=args.cities,
-                                                       include_legend=args.legend,
-                                                       include_warnings=args.warnings,
-                                                       include_rivers=args.rivers,
-                                                       include_topography=args.topo)
+            img = noaa.get_storm_total_precipitation(args.radar,
+                                                     background=args.background,
+                                                     include_highways=args.highways,
+                                                     include_counties=args.counties,
+                                                     include_cities=args.cities,
+                                                     include_legend=args.legend,
+                                                     include_warnings=args.warnings,
+                                                     include_rivers=args.rivers,
+                                                     include_topography=args.topo)
 
         else:
             logger.error("A valid radar type must be specified.")
@@ -124,7 +125,7 @@ def main():
             logger.info("Done")
 
     except KeyboardInterrupt:
-            logger.info("Cancelling...")
+        logger.info("Cancelling...")
 
 
 if __name__ == "__main__":
