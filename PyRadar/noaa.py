@@ -2,8 +2,11 @@
 
 __author__ = 'Chad Dotson'
 
+from logging import getLogger
 from PIL import Image
 from utilities import get_image_from_url
+
+logger = getLogger(__name__)
 
 
 class NOAA:
@@ -62,9 +65,22 @@ class NOAA:
             cities = get_image_from_url(self._ridge_rivers_format.format(self._radar_type_map[type][1], tower_id)).convert("RGBA")
             self._overlay(image, cities)
 
-    def _build_radar_image(self, tower_id, type, background='#000000', include_topography=True, include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True, include_rivers=True):
+    def _build_radar_image(self, tower_id, type, background='#000000', include_topography=True, include_legend=True,
+                           include_counties=True, include_warnings=True, include_highways=True, include_cities=True,
+                           include_rivers=True):
         type = type.upper()
         tower_id = tower_id.upper()
+
+        logger.debug("Tower ID: %s", tower_id)
+        logger.debug("Type: %s", type)
+        logger.debug("Background: %s", background)
+        logger.debug("Include Topography: %s", include_topography)
+        logger.debug("Include Legend: %s", include_legend)
+        logger.debug("Include Counties: %s", include_counties)
+        logger.debug("Include Warnings: %s", include_warnings)
+        logger.debug("Include Highways: %s", include_highways)
+        logger.debug("Include Cities: %s", include_cities)
+        logger.debug("Include Rivers: %s", include_rivers)
 
         radar = get_image_from_url(self._ridge_radar_format.format(type, tower_id)).convert("RGBA")
 
@@ -95,11 +111,41 @@ class NOAA:
 
         return combined_image
 
-    def get_composite_reflectivity(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "NCR", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
+    def get_composite_reflectivity(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                                   include_warnings=True, include_highways=True, include_cities=True,
+                                   include_rivers=True, include_topography=True):
+        """
+        "Get the composite reflectivity for a noaa radar site.
+        :param tower_id: The noaa tower id.  Ex Huntsville, Al -> 'HTX'.
+        :type tower_id: basestring
+        :param background: The hex background color.
+        :type background: basestring
+        :param include_legend: True - include legend.
+        :type include_legend: bool
+        :param include_counties: True - include county lines.
+        :type include_counties: bool
+        :param include_warnings: True - include warning lines.
+        :type include_warnings: bool
+        :param include_highways: True - include highways.
+        :type include_highways: bool
+        :param include_cities: True - include city labels.
+        :type include_cities: bool
+        :rtype: PIL.Image
+        :return: A PIL.Image instance of the NOAA composite reflectivity
+        """
+        return self._build_radar_image(tower_id, "NCR", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
 
-    def get_base_reflectivity(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
-        return self._build_radar_image(tower_id, "N0R", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
+    def get_base_reflectivity(self, tower_id, background='#000000', include_legend=True, include_counties=True,
+                              include_warnings=True, include_highways=True, include_cities=True,
+                              include_rivers=True, include_topography=True):
+        return self._build_radar_image(tower_id, "N0R", background=background, include_legend=include_legend,
+                                       include_counties=include_counties, include_warnings=include_warnings,
+                                       include_highways=include_highways, include_cities=include_cities,
+                                       include_rivers=include_rivers, include_topography=include_topography)
+
 
     def get_storm_relative_motion(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
         return self._build_radar_image(tower_id, "N0S", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
@@ -112,23 +158,3 @@ class NOAA:
 
     def get_storm_total_precipitation(self, tower_id, background='#000000', include_legend=True, include_counties=True, include_warnings=True, include_highways=True, include_cities=True):
         return self._build_radar_image(tower_id, "NTP", background, include_legend, include_counties, include_warnings, include_highways, include_cities)
-
-#noaa = NOAA()
-#
-#image = noaa.get_composite_reflectivity('HTX')
-#image.save("composite_reflectivity.jpg")
-#
-#image = noaa.get_base_reflectivity('HTX')
-#image.save("base_reflectivity.jpg")
-#
-#image = noaa.get_storm_relative_motion('HTX')
-#image.save("storm_relative_motion.jpg")
-#
-#image = noaa.get_base_velocity('HTX')
-#image.save("base_velocity.jpg")
-#
-#image = noaa.get_one_hour_precipitation('HTX')
-#image.save("one_hour_precipitation.jpg")
-#
-#image = noaa.get_storm_total_precipitation('HTX')
-#image.save("storm_total_precipitation.jpg")
