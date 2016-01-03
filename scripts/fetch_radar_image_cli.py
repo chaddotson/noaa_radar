@@ -7,7 +7,7 @@ This script will fetch and composite NOAA weather radar images.
 from argparse import ArgumentParser
 from logging import basicConfig, getLogger, INFO, DEBUG
 
-from PyRadar import NOAA
+from pyradar import NOAA
 
 basicConfig(level=INFO, format='%(asctime)s - %(levelname)s - %(name)s - %(message)s')
 
