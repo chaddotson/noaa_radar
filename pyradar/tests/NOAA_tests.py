@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from noaa import NOAA
+from pyradar.noaa import NOAA
 
 __author__ = 'Chad Dotson'
 
