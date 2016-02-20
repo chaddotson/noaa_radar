@@ -1,6 +1,9 @@
 py-radar
 ========
 
+[![Build Status](https://travis-ci.org/chaddotson/py-radar.svg?branch=master)](https://travis-ci.org/chaddotson/py-radar)
+
+
 Tools for downloading and overlaying radar images from the NOAA Ridge radar site.
 
 
