@@ -1,10 +1,8 @@
-"""Yes! I always have my coffee when I watch radar, you know that. - Dark Helmet (Spaceballs)"""
-
-__author__ = 'Chad Dotson'
-
 from logging import getLogger
 from PIL import Image
-from utilities import get_image_from_url
+from pyradar.utilities import get_image_from_url
+
+__author__ = 'Chad Dotson'
 
 logger = getLogger(__name__)
 
