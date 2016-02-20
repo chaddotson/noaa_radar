@@ -1,6 +1,7 @@
 __author__ = 'Chad Dotson'
 
-import cStringIO
+from six.moves import cStringIO
+
 import urllib2
 
 from PIL import Image
