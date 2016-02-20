@@ -1,7 +1,7 @@
 py-radar
 ========
 
-Resource for grabbing radar images.  Right now, the package just supports NOAA.
+Tools for downloading and overlaying radar images from the NOAA Ridge radar site.
 
 
 * Radar sites - Just remove the 'k' in front of each site in the image below.  For example, 'KHTX' becomes 'HTX'.
