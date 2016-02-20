@@ -1,9 +1,10 @@
 from unittest import TestCase
 
-__author__ = 'Chad Dotson'
-
 from noaa import NOAA
 
+__author__ = 'Chad Dotson'
+
+# Admittedly, these aren't good tests.
 class TestNOAA(TestCase):
 
     def setUp(self):

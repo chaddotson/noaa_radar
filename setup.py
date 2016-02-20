@@ -31,4 +31,7 @@ setup(name='pyradar',
           "Topic :: Utilities",
           "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
       ],
+      test_suite='nose.collector',
+      tests_require=['nose'],
+
 )
