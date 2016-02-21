@@ -2,7 +2,7 @@ from os.path import dirname, join
 from setuptools import setup
 
 
-version = '0.7.1'
+version = '0.7.2'
 
 
 def read(fname):
@@ -20,7 +20,7 @@ setup(name='noaa_radar',
       license="GNUv3",
       keywords=["noaa", "radar", "weather"],
       url="https://github.com/chaddotson/noaa_radar",
-      download_url = 'https://github.com/chaddotson/noaa_radar/tarball/0.7.0',
+      download_url = 'https://github.com/chaddotson/noaa_radar/tarball/0.7.2',
       packages=['noaa_radar', 'scripts'],
       long_description=read("README.rst"),
       install_requires=install_reqs,
