@@ -2,7 +2,7 @@ from os.path import dirname, join
 from setuptools import setup
 
 
-version = '0.7.0'
+version = '0.7.1'
 
 
 def read(fname):
