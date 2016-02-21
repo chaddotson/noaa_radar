@@ -5,8 +5,21 @@ This package provides tools for downloading and overlaying radar images from the
 
 .. image:: https://travis-ci.org/chaddotson/noaa_radar.svg?branch=master
 
-Some simple examples.
+
+
+From the command line
 ---------------------
+From the command line, it is easy to request images with the provided utility script.
+
+
+.. code-block:: bash
+
+    fetch_radar_image_cli --composite_reflectivity --counties --cities --topo --rivers --legend --warnings --rivers ffc sample.jpg
+
+
+
+Some simple code examples.
+--------------------------
 
 .. code-block:: python
 
