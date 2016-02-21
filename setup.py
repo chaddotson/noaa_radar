@@ -10,13 +10,14 @@ with open("requirements.txt", "r'") as f:
     install_reqs = f.readlines()
 
 setup(name='noaa_radar',
-      version='0.8.0',
+      version='0.7.0',
       author="Chad Dotson",
       author_email="chad@cdotson.com",
       description="Tools for downloading and overlaying radar images from the Radar Ridge radar site.",
       license="GNUv3",
-      keywords="noaa radar weather",
-      url="https://github.com/chaddotson/py-radar",
+      keywords=["noaa", "radar", "weather"],
+      url="https://github.com/chaddotson/noaa_radar",
+      download_url = 'https://github.com/chaddotson/noaa_radar/tarball/0.7.0',
       packages=['noaa_radar', 'scripts'],
       long_description=read("README"),
       install_requires=install_reqs,
