@@ -9,7 +9,8 @@ This package provides tools for downloading and overlaying radar images from the
 
 From the command line
 ---------------------
-From the command line, it is easy to request images with the provided utility script.
+From the command line, it is easy to request images with the provided utility script.  This example
+fetches the radar image from the site near Atlanta.  It includes all of the available layers.
 
 
 .. code-block:: bash
