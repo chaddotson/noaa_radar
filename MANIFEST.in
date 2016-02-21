@@ -1,3 +1,2 @@
 include *.txt
-include *.md
-include *.jpg
+include *.rst

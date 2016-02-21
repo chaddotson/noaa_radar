@@ -2,6 +2,9 @@ from os.path import dirname, join
 from setuptools import setup
 
 
+version = '0.7.0'
+
+
 def read(fname):
     return open(join(dirname(__file__), fname)).read()
 
@@ -10,7 +13,7 @@ with open("requirements.txt", "r'") as f:
     install_reqs = f.readlines()
 
 setup(name='noaa_radar',
-      version='0.7.0',
+      version=version,
       author="Chad Dotson",
       author_email="chad@cdotson.com",
       description="Tools for downloading and overlaying radar images from the Ridge radar sites.",
