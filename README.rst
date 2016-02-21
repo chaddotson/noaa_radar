@@ -3,7 +3,7 @@ noaa_radar
 
 This package provides tools for downloading and overlaying radar images from the NOAA Ridge radar sites.
 
-.. image:: https://travis-ci.org/chaddotson/py-radar.svg?branch=master
+.. image:: https://travis-ci.org/chaddotson/noaa_radar.svg?branch=master
 
 Some simple examples.
 ---------------------
