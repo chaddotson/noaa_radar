@@ -1,13 +1,13 @@
 from logging import getLogger
 from PIL import Image
-from pyradar.utilities import get_image_from_url
+from noaa_radar.utilities import get_image_from_url
 
 __author__ = 'Chad Dotson'
 
 logger = getLogger(__name__)
 
 
-class NOAA:
+class Radar:
 
     _ridge_radar_format = 'http://radar.weather.gov/ridge/RadarImg/{0}/{1}_{0}_0.gif'
     _ridge_legend_format = 'http://radar.weather.gov/ridge/Legend/{0}/{1}_{0}_Legend_0.gif'
@@ -133,7 +133,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA composite reflectivity.
+        :return: A PIL.Image instance with the Radar composite reflectivity.
         """
         return self._build_radar_image(tower_id, "NCR", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -164,7 +164,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA base reflectivity.
+        :return: A PIL.Image instance with the Radar base reflectivity.
         """
         return self._build_radar_image(tower_id, "N0R", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -195,7 +195,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA storm relative motion.
+        :return: A PIL.Image instance with the Radar storm relative motion.
         """
         return self._build_radar_image(tower_id, "N0S", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -226,7 +226,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA base velocity.
+        :return: A PIL.Image instance with the Radar base velocity.
         """
         return self._build_radar_image(tower_id, "N0V", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -257,7 +257,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA one hour precipitation.
+        :return: A PIL.Image instance with the Radar one hour precipitation.
         """
         return self._build_radar_image(tower_id, "N1P", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,
@@ -288,7 +288,7 @@ class NOAA:
         :param include_topography: True - include topography
         :type include_topography: bool
         :rtype: PIL.Image
-        :return: A PIL.Image instance with the NOAA storm total precipitation.
+        :return: A PIL.Image instance with the Radar storm total precipitation.
         """
         return self._build_radar_image(tower_id, "NTP", background=background, include_legend=include_legend,
                                        include_counties=include_counties, include_warnings=include_warnings,

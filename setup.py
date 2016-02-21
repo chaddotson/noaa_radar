@@ -9,15 +9,15 @@ def read(fname):
 with open("requirements.txt", "r'") as f:
     install_reqs = f.readlines()
 
-setup(name='pyradar',
+setup(name='noaa_radar',
       version='0.8.0',
       author="Chad Dotson",
       author_email="chad@cdotson.com",
-      description="Tools for downloading and overlaying radar images from the NOAA Ridge radar site.",
+      description="Tools for downloading and overlaying radar images from the Radar Ridge radar site.",
       license="GNUv3",
       keywords="noaa radar weather",
       url="https://github.com/chaddotson/py-radar",
-      packages=['pyradar', 'scripts'],
+      packages=['noaa_radar', 'scripts'],
       long_description=read("README"),
       install_requires=install_reqs,
       include_package_data=True,

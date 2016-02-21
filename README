@@ -1,7 +1,7 @@
 py-radar
 ========
 
-Tools for downloading and overlaying radar images from the NOAA Ridge radar site.
+Tools for downloading and overlaying radar images from the Radar Ridge radar site.
 
 For an map of radar sites see, the included noaa_radar_coverage_map.jpg. On the map,
 Radar site names start with a K, just remove it and you have the name string of the site

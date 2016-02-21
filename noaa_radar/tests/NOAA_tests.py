@@ -1,6 +1,6 @@
 from unittest import TestCase
 
-from pyradar.noaa import NOAA
+from noaa_radar.radar import Radar
 
 __author__ = 'Chad Dotson'
 
@@ -8,7 +8,7 @@ __author__ = 'Chad Dotson'
 class TestNOAA(TestCase):
 
     def setUp(self):
-        self.noaa = NOAA()
+        self.noaa = Radar()
 
     def test_get_composite_reflectivity(self):
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python
 
 """
-This script will fetch and composite NOAA weather radar images.
+This script will fetch and composite Radar weather radar images.
 """
 
 from argparse import ArgumentParser
 from logging import basicConfig, getLogger, INFO, DEBUG
 
-from pyradar import NOAA
+from noaa_radar import Radar
 
 basicConfig(level=INFO, format='%(asctime)s - %(levelname)s - %(name)s - %(message)s')
 
@@ -49,7 +49,7 @@ def main():
 
         img = None
 
-        noaa = NOAA()
+        noaa = Radar()
 
         if args.base_reflectivity:
             img = noaa.get_base_reflectivity(args.radar,

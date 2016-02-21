@@ -1,6 +1,6 @@
-from pyradar import NOAA
+from noaa_radar import Radar
 
-noaa = NOAA()
+noaa = Radar()
 
 image = noaa.get_composite_reflectivity('HTX')
 image.save("composite_reflectivity.jpg")
