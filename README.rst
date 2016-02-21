@@ -1,9 +1,15 @@
-py-radar
-========
+noaa_radar
+==========
 
 This package provides tools for downloading and overlaying radar images from the NOAA Ridge radar sites.
 
-Examples:
+.. image:: https://travis-ci.org/chaddotson/py-radar.svg?branch=master
+
+Some simple examples.
+---------------------
+
+.. code-block:: python
+
     from noaa_radar import Radar
 
     noaa = Radar()
