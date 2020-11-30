@@ -1,4 +1,4 @@
-from six.moves import cStringIO
+from io import BytesIO
 
 try:
     from urllib2 import build_opener
@@ -13,5 +13,5 @@ def get_image_from_url(url):
     opener = build_opener()
     opener.addheaders = [('User-agent', 'Mozilla/4.0 (compatible; MSIE 5.01; Windows NT 5.0)')]
     response = opener.open(url)
-    im = cStringIO(response.read())
+    im = BytesIO(response.read())
     return Image.open(im)
