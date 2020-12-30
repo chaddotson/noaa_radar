@@ -6,6 +6,11 @@ This package provides tools for downloading and overlaying radar images from the
 .. image:: https://travis-ci.org/chaddotson/noaa_radar.svg?branch=master
 
 
+MIGHT BE DEPRECATED
+---------------------
+It looks like NOAA has depcreated the old radar api and modernized their radar features.  Sometime in the November 2020 to December 2020, this package ceased working due to the API going offline.  If the API is restored, work will continue to port this to python 3.
+
+
 
 From the command line
 ---------------------
